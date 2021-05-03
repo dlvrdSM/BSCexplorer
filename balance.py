@@ -23,15 +23,15 @@ wallet = '0x0000000000000000000000000000000000000001' # the burn address
 
 def job():
     now = datetime.now()
-    current_date = now.strftime("%d/%m/%Y")
-    current_time = now.strftime("%H:%M:%S")
+    current_date = now.strftime('%d/%m/%Y')
+    current_time = now.strftime('%H:%M:%S')
     current_balance = balance(contract, wallet)
     with open('data.txt', 'a') as data:
         current_data = f'{current_date}, {current_time}, {current_balance}\n' 
         data.write(current_data)
 
         
-schedule.every().hours.do(job)
+schedule.every().hour.at(':00').do(job)
         
     
 while True:

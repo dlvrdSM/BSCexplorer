@@ -6,7 +6,7 @@ import time
 
 def token_balance(contract_address, wallet_address):
     '''Get the token balance for a certain address.'''
-    api_key = '' 
+    api_key = 'JI6FP9A36YMSKZW82KCQQCQFVH1VUXGV5S' 
     # The BSC API key is available for free 
     # at https://bscscan.com/myapikey after registering
     response = requests.get('https://api.bscscan.com/api?module=account&action=tokenbalance'
@@ -25,7 +25,7 @@ def job():
     now = datetime.now()
     current_date = now.strftime('%d/%m/%Y')
     current_time = now.strftime('%H:%M:%S')
-    current_balance = balance(contract, wallet)
+    current_balance = token_balance(contract, wallet)
     with open('data.txt', 'a') as data:
         current_data = f'{current_date}, {current_time}, {current_balance}\n' 
         data.write(current_data)

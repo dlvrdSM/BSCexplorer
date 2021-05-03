@@ -1,4 +1,13 @@
+from datetime import datetime
 import requests
+import schedule
+import time
+
+
+api_key = '' 
+# The BSC API key is available for free 
+# at https://bscscan.com/myapikey after registering
+
 
 def token_balance(contract_address, wallet_address):
     '''Get the token balance for a certain address.'''
@@ -8,3 +17,25 @@ def token_balance(contract_address, wallet_address):
     token_balance = int(result) / pow(10, 9) 
     
     return token_balance
+
+
+contract =  '0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3' # the Safemoon contract address
+wallet = '0x0000000000000000000000000000000000000001' # the burn address
+
+
+def job():
+    now = datetime.now()
+    current_date = now.strftime("%d/%m/%Y")
+    current_time = now.strftime("%H:%M:%S")
+    current_balance = balance(contract, wallet)
+    with open('data.txt', 'a') as data:
+        current_data = f'{current_date}, {current_time}, {current_balance}\n' 
+        data.write(current_data)
+
+        
+schedule.every().hours.do(job)
+        
+    
+while True:
+    schedule.run_pending()
+    time.sleep(1)

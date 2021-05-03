@@ -6,7 +6,7 @@ import time
 
 def token_balance(contract_address, wallet_address):
     '''Get the token balance for a certain address.'''
-    api_key = 'JI6FP9A36YMSKZW82KCQQCQFVH1VUXGV5S' 
+    api_key = '' 
     # The BSC API key is available for free 
     # at https://bscscan.com/myapikey after registering
     response = requests.get('https://api.bscscan.com/api?module=account&action=tokenbalance'

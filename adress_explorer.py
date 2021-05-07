@@ -31,7 +31,7 @@ def job():
         data.write(current_data)
 
         
-schedule.every().hour.at(':00').do(job)
+schedule.every().hour.at(':00').do(job) # Run job every hour at the minute :00
         
     
 while True:

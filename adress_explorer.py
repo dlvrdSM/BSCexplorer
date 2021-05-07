@@ -1,3 +1,5 @@
+'''Powered by BscScan.com APIs'''
+
 from datetime import datetime
 import requests
 import schedule
